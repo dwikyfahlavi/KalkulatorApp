@@ -17,27 +17,47 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  final String title;
-  const MyHomePage({super.key, required this.title});  
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  TextEditingController angka1 = TextEditingController();
+  TextEditingController angka2 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         // The title text which will be shown on the action bar
-        title: Text(title),
+        title: Text('Kalkulator Kuh'),
       ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: Form(
+          child: Column(
+            children: [
+              TextFormField(
+                controller: angka1,
+                decoration: InputDecoration(label: Text('Angka Pertama')),
+              ),
+              TextFormField(
+                controller: angka2,
+                decoration: InputDecoration(label: Text('Kedua')),
+              ),
+            ],
+          ),
         ),
       ),
     );
+    ;
   }
 }
